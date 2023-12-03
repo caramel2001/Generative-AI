@@ -33,7 +33,14 @@ class Discriminator(nn.Module):
 
 class Generator(nn.Module):
     def __init__(self, z_dim, img_dim, batchNorm=False):
-        # z_dim is latent noise dimension
+        """
+        Generator class for a simple GAN.
+
+        Args:
+            z_dim (int): The dimension of the latent noise.
+            img_dim (int): The dimension of the generated image.
+            batchNorm (bool, optional): Whether to use batch normalization. Defaults to False.
+        """
         super().__init__()
         if not batchNorm:
             self.gen = nn.Sequential(
@@ -56,6 +63,15 @@ class Generator(nn.Module):
             )
 
     def forward(self, x):
+        """
+        Forward pass of the generator.
+
+        Args:
+            x (torch.Tensor): The input tensor.
+
+        Returns:
+            torch.Tensor: The generated output tensor.
+        """
         return self.gen(x)
 
 
